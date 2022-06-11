@@ -1,0 +1,11 @@
+{
+    "nuxt.isNuxtApp": false,
+    "i18n-ally.localesPaths": [
+        "resources/lang",
+        "public/addmin/plugins/fullcalendar/locales",
+        "public/addmin/plugins/moment/locale",
+        "public/addmin/plugins/jsgrid/i18n",
+        "public/addmin/plugins/summernote/lang",
+        "public/addmin/plugins/select2/js/i18n"
+    ]
+}
