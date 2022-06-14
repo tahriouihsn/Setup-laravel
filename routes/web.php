@@ -14,19 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::view('/Etudiant','Etudiant.EspaceEtudiant');
 
 Route::view('/Administration','administration.administration');
 
-//--------------  Espace Prof--------------------// 
+//--------------  Espace Prof--------------------//
 Route::group(['prefix' => 'Prof' , 'namespace' => 'Prof'], function () {
-    
+
     Route::get('/','ProfController@index')->name('home.prof');
     Route::get('/create-seance','ProfController@createSeance')->name('create.seance');
     Route::post('/save-seance','ProfController@saveSeance')->name('save.seance');
@@ -34,13 +34,13 @@ Route::group(['prefix' => 'Prof' , 'namespace' => 'Prof'], function () {
     // Routes : Noter Absence
     Route::get('/noterabsence/{id}','ProfController@PageNoteAbsence')->name('pageAbsence');
     Route::post('/save-absence','ProfController@saveAbsence')->name('save.absence');
-    
+
     // historique d'absence
     Route::get('/historique-absence','ProfController@historiqueAbsence')->name('historique.absence');
 
 });
 
-//--------------  Espace Prof--------------------// 
+//--------------  Espace Prof--------------------//
 
 
 
