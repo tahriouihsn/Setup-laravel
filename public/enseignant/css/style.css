@@ -1,45 +1,47 @@
-body{
+body {
     padding-top: 70px;
 }
 /*start style navbar*/
 .navbar .navbar-brand img {
-   height:40px;
-   line-height: 60px;
+    height: 40px;
+    line-height: 60px;
 }
 
-
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link{
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link {
     margin-right: 30px;
     font-size: 18px;
     color: #888;
 }
-.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active,
- .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
     color: #888;
 }
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
-    color:blue;
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    color: blue;
     font-weight: bold;
 }
 
-
 .navbar .navbar-nav .btn-primary {
-  color: white;
-  font-size: 18px;
+    color: white;
+    font-size: 18px;
 }
 .navbar .navbar-nav .btn-primary:hover {
     color: blue;
-    background-color:white;
-  }
-  .navbar-nav .dropdown-menu {
+    background-color: white;
+}
+.navbar-nav .dropdown-menu {
     position: static;
     float: none;
     height: 162px;
     color: red;
     background-color: #f8f9fa;
     border-top: 3px solid rgb(42, 42, 204);
-    border-top-color:rgb(42, 42, 204);
+    border-top-color: rgb(42, 42, 204);
     border-top-style: solid;
     border-top-width: 4px;
     margin-top: 7px;
@@ -53,16 +55,15 @@ body{
 .dropdown-menu .dropdown-item {
     padding: 9px 20px;
     margin-bottom: 7px;
-    
 }
 .dropdown-menu .dropdown-item:hover {
     color: white;
     background: rgb(42, 42, 204);
     padding-left: 30px;
- -webkit-transition: padding 0.5s ease;
- -moz-transition: padding 0.5s ease;
- -o-transition: padding 0.5s ease;
- transition: padding 0.5s ease;   
+    -webkit-transition: padding 0.5s ease;
+    -moz-transition: padding 0.5s ease;
+    -o-transition: padding 0.5s ease;
+    transition: padding 0.5s ease;
 }
 
 /* start section about  */
@@ -71,100 +72,93 @@ body{
     padding-bottom: 60px;
 }
 .about .lead {
-    color :#888;
+    color: #888;
     font-size: 22px;
     margin-top: 15px;
 }
 .about h1 span {
-    color:rgb(91, 91, 168);
+    color: rgb(91, 91, 168);
 }
-.about h1{
+.about h1 {
     font-weight: bold;
     padding-bottom: 20px;
 }
 
 /* start section servises */
 
-.features{
+.features {
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #EEE;
-
+    background-color: #eee;
 }
-.features h1{
+.features h1 {
     font-weight: bold;
     margin-bottom: 30px;
 }
-.features h4{
+.features h4 {
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-.features .feat p{
+.features .feat p {
     line-height: 1em;
-    margin-left: 24px;
     margin-bottom: 20px;
 }
-.features .feat a{
-   
+.features .feat a {
     margin-bottom: 20px;
 }
 
 /* start section footer  */
 
-
-.footer{
-    background: rgba(1, 1, 1,0.87);
+.footer {
+    background: rgba(1, 1, 1, 0.87);
     color: white;
     padding-top: 10px;
-    
-  }
-  .footer .three-columns a{
-      color:white;
-      font-size: 16px;
-      text-decoration: none;
-  }
-  .footer .three-columns a :hover{
-      color: blue ;
-      font-weight: bold ;    
-  }
-  .footer h3 {
-      color: #0895D1;
-      font-weight: bold;
-      letter-spacing: 1px;  /*espace entre les ligne */
-      margin: 10px 0 10px ;
-  }
-  .footer .three-columns{
-      overflow: hidden;
-  }
-  .footer .three-columns li {
-      width: 50%;
-      float: left; /*pour faire trois dans caque ligne (important */
-      padding: 5px 0 ;
-      padding-left: 0;
-  }
-  .footer .sosial{
-      overflow: hidden;
-     margin-top: 16px;
-     margin-bottom: 10px;
-     margin-left: 80px;
-    
-  }
-  .footer .sosial li {
-      float: left;
-      margin-right: 13px;
-     
-  }
-  .footer .copyright{
-      background: #333;
-      padding: 15px 0px;
-      margin-top: 20px;
-      font-size: 18px;
-  }
-  .footer .copyright span {
-    color: #0895D1;
+}
+.footer .three-columns a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
+.footer .three-columns a :hover {
+    color: blue;
     font-weight: bold;
-  }
+}
+.footer h3 {
+    color: #0895d1;
+    font-weight: bold;
+    letter-spacing: 1px; /*espace entre les ligne */
+    margin: 10px 0 10px;
+}
+.footer .three-columns {
+    overflow: hidden;
+}
+.footer .three-columns li {
+    width: 50%;
+    float: left; /*pour faire trois dans caque ligne (important */
+    padding: 5px 0;
+    padding-left: 0;
+}
+.footer .sosial {
+    overflow: hidden;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+.footer .sosial li {
+    float: left;
+    margin-right: 13px;
+}
+.footer .copyright {
+    background: #333;
+    padding: 15px 0px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+.footer .copyright span {
+    color: #0895d1;
+    font-weight: bold;
+}
 
 /*end section footetr */
 
@@ -175,7 +169,7 @@ body{
 }
 
 .home h1{
-   
+
     color: white;
     margin-bottom: 100px;
     padding-top: 23px;
@@ -186,21 +180,21 @@ body{
     padding: 0;
 }
 .home .col-md-5 {
-    padding: 0;   
+    padding: 0;
 }
 
 .home p{
     color: white;
     line-height: 50px;
     padding-bottom: 26px;
-  
+
     color: white;
     font-size: 26px;
-    line-height: 40px;  
+    line-height: 40px;
 }
 
 .home a {
-    
+
     color: #5e4eb8;
     text-align: center;
     background: #fff;
@@ -218,5 +212,4 @@ body{
     color:blue;
   } */
 
-  
 /*start footer*/

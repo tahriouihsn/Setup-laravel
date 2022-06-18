@@ -23,9 +23,9 @@ class CreateEtudiantsTable extends Migration
             $table->integer('phone_etu');
             $table->timestamps();
 
-           
+
         });
-        
+
     }
 
     /**

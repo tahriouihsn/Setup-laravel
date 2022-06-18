@@ -16,9 +16,9 @@ class AddIdfilIduserEtudiant extends Migration
         Schema::table('etudiants', function (Blueprint $table) {
             //
             $table->foreignId('id_filiere')->constrained('filieres')->onDelete('cascade');
-            
-    $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
-    
+
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+
         });
     }
 

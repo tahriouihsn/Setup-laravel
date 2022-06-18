@@ -9,36 +9,48 @@ use App\Filiere;
 use App\Semestre;
 use App\Enseignant;
 use App\Etudiant;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class etudiantController extends Controller
 {
-    //la fonction qui permet de retourner le data du filiere u 
+    //la fonction qui permet de retourner le data du filiere u
     public function addStudent()
-    {    
+    {
         $filieres=Filiere::select('id','nom_filiere')->get();
 
         return view('admin.etudiant.addStudent',compact('filieres'));
-      
+
     }
-   // la fonction qui permet d'afficher les information  des etudiants 
+   // la fonction qui permet d'afficher les information  des etudiants
     public function showAllStudent()
     {
         $students=Etudiant::with('filiere')->get();
          //return $matieres;
         return view('admin/etudiant/showAll',compact('students'));
     }
-    //la fonction qui permet d'ajouter et enregistrer les etudiant 
+    //la fonction qui permet d'ajouter et enregistrer les etudiant
     public function saveStudent(Request $request){
-    
-        // les données nesessaires dans l'ajoute 
+
+        // les données nesessaires dans l'ajoute
         $request->validate([
-            'nom' => 'required', 
+            'nom' => 'required',
             'cne'=> 'required ',
             'prenom'=>'required',
+            'email' => 'required',
+            'password' => 'required|min:4',
             'phone'=>'required|max:10',
-            ]);         
-        // enregistrer les données dans la base de données 
+            ]);
+        // enregistrer les données dans la base de données
+        // dd($request->email);
         try {
+            $user=new User();
+            $user->email=$request->email;
+            $user->name=$request->nom;
+            $user->password=Hash::make($request->password);
+            $user->id_role=4;
+            $user->save();
             Etudiant::create(
                 [
                     'cne' => $request->cne,
@@ -46,58 +58,70 @@ class etudiantController extends Controller
                     'prenom_etu' => $request->prenom,
                     'phone_etu' => $request->phone,
                     'id_filiere' => $request->filiere,
-                    'id_user'=> 4
+                    'id_user'=> $user->id
                 ]
                 );
-                //afficher un message de success si  les données des etudiants sont bein enregistrées 
+                //afficher un message de success si  les données des etudiants sont bein enregistrées
                 return redirect()->route('show.all.student')->with(['success' => ' Etudiant est Bien ajouté ']);
-                
+
             } catch (\Exception $ex) {
-                //afficher un message d'erreur  si  les données des etudiants ne sont pas bein enregistrées 
+                //afficher un message d'erreur  si  les données des etudiants ne sont pas bein enregistrées
               return $ex;
                 return redirect()->route('add.student')->with(['error' => 'Erreur!!! ']);
         }
     }
-   //la fonction utilises dans la modification des données des étudiants 
+   //la fonction utilises dans la modification des données des étudiants
     public function editStudent($id)
     {
         $etudiant=Etudiant::find($id);
+        $user=$etudiant->user;
         if(!$etudiant)
            redirect() -> route('show.all.student') -> with(['Erreur' => "Etudiant n'existe pas !!!"]);
-         
-           $filieres=Filiere::select('id','nom_filiere')->get();
-        return view('admin.etudiant.update',compact('filieres','etudiant'));
+
+        $filieres=Filiere::select('id','nom_filiere')->get();
+        return view('admin.etudiant.update',compact('filieres','etudiant','user'));
     }
 
     //la fonction permet de modifier les données des étudiants
     public function updateStudent(Request $request)
     {
-        
         $request->validate([
-            'nom' => 'required', 
+            'nom' => 'required',
             'cne'=> 'required ',
             'prenom'=>'required'
-            ]);         
+            ]);
+            $etudiant= Etudiant::with('user')->where('id',$request->id)->first();
+            $user=$etudiant->user;
+            if ($user->email!==$request->email) {
+                $user->email=$request->email;
+            }
+            if ($user->name!==$request->prenom) {
+                $user->name=$request->prenom;
+            }
+            if ($user->password!==null) {
+                $user->password=Hash::make($request->password);
+            }
+            $user->save();
         try {
-            Etudiant::where('id',$request ->id) -> update(
+
+           $etudiant->update(
                 [
                     'cne' => $request->cne,
                     'nom_etu' => $request->nom,
                     'prenom_etu' => $request->prenom,
                     'phone_etu' => $request->phone,
                     'id_filiere' => $request->filiere,
-                    'id_user'=> 4
                 ]);
-                // un message de success afficher si les données sont bein modifiées 
+                // un message de success afficher si les données sont bein modifiées
                 return redirect()->route('show.all.student')->with(['update' => ' Etudiant est Bien modifié ']);
-                
+
             } catch (\Exception $ex) {
-                //  // un message d'erreur  s'il y a pas de modification 
+                //  // un message d'erreur  s'il y a pas de modification
                 return redirect()->route('add.student')->with(['error' => 'There is somthing went wrong ']);
         }
-      
+
     }
-  // la fonction qui permet de supprimer un étudiant 
+  // la fonction qui permet de supprimer un étudiant
     public function deleteStudent($id)
     {
         $student=Etudiant::find($id);
@@ -105,7 +129,7 @@ class etudiantController extends Controller
            redirect() -> route('show.all.student') -> with(['error' => 'student Does not exist']);
 
            Etudiant::where('id',$id) -> delete();
-           return redirect()->route('show.all.student')->with(['delete' => 'Etudiant est supprime avec succes']); 
+           return redirect()->route('show.all.student')->with(['delete' => 'Etudiant est supprime avec succes']);
     }
 
 }

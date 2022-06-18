@@ -9,7 +9,7 @@ use App\Enseignant;
 use App\User;
 class profController extends Controller
 {
-   
+
 
     public function addProf()
     {
@@ -48,7 +48,7 @@ class profController extends Controller
         $prof->phone_ens = $phone;
         $prof->id_user = $iduser;
         $prof->save();
-       
+
         return redirect()->route('show.all.prof')->with(['ajoute' => ' Enseignant est Bien Ajoute ']);
 
     }
@@ -58,19 +58,19 @@ class profController extends Controller
         $prof =Enseignant::find($id);
         if(!$prof)
            redirect() -> route('show.all.prof') -> with(['Erreur' => "Enseignant n'existe pas !!!"]);
-         
+
         return view('admin.prof.update',compact('prof'));
     }
 
     public function updateprof(Request $request)
     {
     $request->validate([
-        'nom' => 'required', 
+        'nom' => 'required',
         'prenom'=> 'required ',
         'adresse'=>'required',
         'tel'=>'required'
 
-        ]);         
+        ]);
     try {
         Enseignant::where('id',$request ->id) -> update(
             [
@@ -79,17 +79,17 @@ class profController extends Controller
                 'adresse_ens' => $request->adresse,
                 'phone_ens' => $request->tel,
             ]);
-            // un message de success afficher si les données sont bein modifiées 
+            // un message de success afficher si les données sont bein modifiées
             return redirect()->route('show.all.prof')->with(['success' => ' Enseignant est Bein modifié ']);
-            
+
         } catch (\Exception $ex) {
-            //  // un message d'erreur  s'il y a pas de modification 
+            //  // un message d'erreur  s'il y a pas de modification
             return redirect()->route('add.prof')->with(['error' => 'There is somthing went wrong ']);
     }
 
-   
 
-  
+
+
 }
 public function deleteprof($id)
 {
@@ -98,7 +98,7 @@ public function deleteprof($id)
        redirect() -> route('show.all.prof') -> with(['error' => 'Enseignant no existe']);
 
        Enseignant::where('id',$id) -> delete();
-       return redirect()->route('show.all.prof')->with(['delete' => 'enseignant supprime avec succes']); 
+       return redirect()->route('show.all.prof')->with(['delete' => 'enseignant supprime avec succes']);
 }
 
 }

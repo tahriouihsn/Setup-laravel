@@ -21,9 +21,13 @@ class Etudiant extends Model
         return $this->belongsTo('App\Filiere','id_filiere');
 
     }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
     public function absenceEtudiant()
     {
         return $this->hasMany('App\Absence')->withTimestamps();
-    
+
     }
 }

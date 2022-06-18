@@ -8,7 +8,7 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    
+
     <!-- SidebarSearch Form -->
     <br>
     <div class="form-inline">
@@ -27,7 +27,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        
+
         <!--  gestion des etudiant -->
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -50,9 +50,33 @@
                 <p>Add Student</p>
               </a>
             </li>
-            
+
           </ul>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Filiere
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Show All</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Student</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
         <!-- Gestion des Prof -->
 
         <li class="nav-item">
@@ -76,13 +100,13 @@
                 <p>Add Teacher</p>
               </a>
             </li>
-            
+
           </ul>
         </li>
 
-       
-       
-        
+
+
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
@@ -99,7 +123,7 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    
+
 
     <!-- SidebarSearch Form -->
     <br>
@@ -119,7 +143,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        
+
         <!--  gestion des etudiant -->
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -142,7 +166,7 @@
                 <p>Ajouter un Etudiant</p>
               </a>
             </li>
-            
+
           </ul>
         </li>
         <!-- Gestion des Prof -->
@@ -168,7 +192,7 @@
                 <p>Ajouter un Enseignant</p>
               </a>
             </li>
-            
+
           </ul>
         </li>
         <!-- Gestion des matiere -->
@@ -194,13 +218,13 @@
                 <p>Ajouter un Matiere</p>
               </a>
             </li>
-            
+
           </ul>
         </li>
 
-       
-       
-        
+
+
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

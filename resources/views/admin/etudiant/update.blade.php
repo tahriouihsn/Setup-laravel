@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-   
+
 <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
@@ -9,9 +9,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          
-            <h1>modifier un étudiant</h1>
-          
+
+            <h1>Modifier un étudiant</h1>
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -20,7 +20,7 @@
 
     <section class="content">
       <div class="container-fluid">
-       
+
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">Modifier un étudiant</h3>
@@ -45,11 +45,14 @@
                   @error('nom')
                   <div class="alert alert-danger "> {{ $message }} </div>
                  @enderror
-                
+
                  @if (Session::has('error'))
                      <div class="alert alert-danger"> {{ Session::get('error') }} </div>
                  @endif
-                
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                      </div>
 
                   <label>CNE</label>
                   <input type="text" name="cne" class="form-control" value="{{ $etudiant->cne }}">
@@ -58,6 +61,18 @@
                 <div class="form-group">
                     <label>Nom</label>
                     <input type="text" name="prenom" class="form-control" value="{{ $etudiant->nom_etu }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Filiere</label>
+                    <select class="form-control select2" style="width: 100%;" name="filiere">
+                        @isset($filieres)
+                        @foreach ($filieres as $filiere)
+
+                      <option value="{{ $filiere->id }}" @if ($filiere->id == $etudiant->id_filiere) selected @endif>{{ $filiere->nom_filiere }}</option>
+
+                        @endforeach
+                        @endisset
+                      </select>
                   </div>
               </div>
 
@@ -71,30 +86,20 @@
                     <label>Phone</label>
                     <input type="text" name="phone" class="form-control " value="{{ $etudiant->phone_etu }}">
                   </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control " >
+                  </div>
                 <!-- /.form-group -->
-              </div>
-              <div class="col-md-6">
-              <div class="form-group">
-                <label>Filiere</label>
-                <select class="form-control select2" style="width: 100%;" name="filiere">
-                    @isset($filieres)
-                    @foreach ($filieres as $filiere)
-                  
-                  <option value="{{ $filiere->id }}" @if ($filiere->id == $etudiant->id_filiere) selected @endif>{{ $filiere->nom_filiere }}</option>
-  
-                    @endforeach
-                    @endisset
-                  </select>
               </div>
 
               </div>
-              </div>
-              <!-- /.col -->    
+              <!-- /.col -->
                 <input type="hidden" name="id" value="{{ $etudiant->id }}">
-                <input type="submit" value="Modifier" class="btn btn-primary">  
-            
-          </form>      
-              
+                <input type="submit" value="Modifier" class="btn btn-primary">
+
+          </form>
+
             </div>
 
           </div>
