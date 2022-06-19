@@ -11,7 +11,7 @@
    <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
-     <form action=" {{ route('save.absence') }} " method="post">
+     <form action=" {{ route('edit.absence') }} " method="post">
        @csrf
 <table class="table table-striped table">
         <thead class="bg-primary text-white">

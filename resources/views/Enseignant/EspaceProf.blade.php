@@ -18,10 +18,10 @@
       <div class="row"><!-- featues1 -->
         <div class=" col-md-3  col-xs-12 ">
             <div class="feat"> <!--my div -->
-              <i class="fa fa-pencil"  style="font-size:48px;" aria-hidden="true"></i>
-              <h4>Créer une séance</h4>
-             <p class="lead">Créer une séance ou dans laquelle vous pouvez noter l'absence</p>
-             <a href=" {{ route('create.seance') }} " class="btn btn-primary mt-auto">Entrer</a>
+              <i class="fa fa-list"  style="font-size:48px;" aria-hidden="true"></i>
+              <h4>Liste étudiants</h4>
+             <p class="lead">Liste des étudiants par modules</p>
+             <a href=" {{ route('liste.modules') }} " class="btn btn-primary mt-auto">Entrer</a>
             </div>
           </div>
         <div class=" col-md-3  col-xs-12 text-center">

@@ -3,20 +3,20 @@
 
  @section('content')
 
-   
+
 
    <section class="features text-center">
     <div class="container">
       <br><br>
       <h1>Liste des Seances</h1>
-      
+
       @if (Session::has('success'))
       <div class="alert alert-success"> {{ Session::get('success') }} </div>
       @endif
       @if (Session::has('error'))
       <div class="alert alert-danger"> {{ Session::get('error') }} </div>
       @endif
- 
+
       <table class="table table-hover table-striped">
         <thead>
           <tr>
@@ -32,7 +32,7 @@
         <tbody>
           @isset($seances)
             @foreach ($seances as $seance)
-                 
+
              <tr>
                <th scope="row">1</th>
                <td>{{ $seance-> seancematiere -> nom_mat }}</td>
@@ -40,19 +40,22 @@
                <td>{{ $seance-> heure_debut }}</td>
                <td>{{ $seance-> heure_fin }}</td>
                <td>{{ $seance-> type }}</td>
-               <td><a href="{{ route('pageAbsence',$seance->id)}}">  
+               <td><a href="{{ route('pageAbsence',$seance->id)}}">
                <button class="btn btn-success btn-sm rounded-2" type="button" data-toggle="tooltip" data-placement="top" title="Edit" @if ($seance->active == 1 ) disabled
-                   
-               @endif>Noter Absences  <i class="fa fa-edit"></i></button></a></td>
+
+               @endif>Noter Absences  <i class="fa fa-edit"></i></button></a>
+               <a href="{{ route('pageAbsenceEdit',$seance->id)}}">
+               <button class="btn btn-danger btn-sm rounded-2" type="button" data-toggle="tooltip" data-placement="top" title="Edit" >Modifier Absences  <i class="fa fa-edit"></i></button></a>
+            </td>
               </tr>
-              
-            @endforeach 
+
+            @endforeach
           @endisset
         </tbody>
       </table>
 <br><br>
-      
+
     </div>
-  </section> 
+  </section>
 
  @endsection

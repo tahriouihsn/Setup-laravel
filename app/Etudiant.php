@@ -27,7 +27,7 @@ class Etudiant extends Model
     // }
     public function absenceEtudiant()
     {
-        return $this->hasMany('App\Absence')->withTimestamps();
+        return $this->hasMany('App\Absence','id_etu');
 
     }
 }

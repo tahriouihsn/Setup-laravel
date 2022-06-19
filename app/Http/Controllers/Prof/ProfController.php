@@ -90,6 +90,23 @@ public function PageNoteAbsence($id){
 
     return view('Enseignant.NoterAbsence',compact('seance','etudiants','filiere'));
 }
+public function PageNoteAbsenceEdit($id){
+
+    //retourner id de la seance a partir du liste des seances
+    $seance = Seance::findOrFail($id);
+    $id_matiere = $seance->id_mat;//la matiere de cette seance
+    $abs=$seance->absences()->get();
+    //recuperer la filiere a partir du id_matiere
+    $filiere = Matiere::find($id_matiere)->filieremat()->get();
+  foreach($filiere as $f){
+
+    $id_fil = $f->id;
+    $etudiants = Etudiant::where('id_filiere',$id_fil)->get();
+  }
+
+    return view('Enseignant.NoterAbsenceEdit',compact('seance','etudiants','filiere','abs'));
+}
+
 public function saveAbsence(Request $request)
 {
 
@@ -103,7 +120,7 @@ public function saveAbsence(Request $request)
     $tableAbsence=[];
   try {
        foreach ($absences as $absence) {
-
+        // Absence::where('id_sea',$request->id_sea)->where('id_etu',$absence['id_etu']);
           $tableAbsence[]= [
 
             'id_sea' => $request->id_sea,
@@ -119,6 +136,43 @@ public function saveAbsence(Request $request)
     Seance::where('id',$request->id_sea)->update(['active' => 1]);
 
        return redirect()->route('list.seance')->with(['success' => 'absence est bien ajouter ']);
+  } catch (\Exception $ex) {
+      return $ex;
+    return redirect()->route('list.seance')->with(['error' => 'Erreur!!! ']);
+  }
+
+}
+public function editAbsence(Request $request)
+{
+
+     // validation
+     $request -> validate([
+         'absence.*.id_etu' => 'required |numeric',
+         'absence.*.etat' => 'required |numeric|in:0,1',
+     ]);
+
+    $absences = $request->absence;
+
+    $tableAbsence=[];
+  try {
+       foreach ($absences as $absence) {
+        // Absence::where('id_sea',$request->id_sea)->where('id_etu',$absence['id_etu']);
+          $tableAbsence[]= [
+
+            'id_sea' => $request->id_sea,
+            'id_etu' => $absence['id_etu'] ,
+            'etat' => $absence['etat'] ,
+            'justification' => $absence['justification'] ,
+        ];
+
+    }
+     // inserer les absences dans la table absence
+     DB::table('absences')->where('id_sea',$request->id_sea)
+    ->updateOrCreate($tableAbsence[0]);
+    // remplacer la valeur du champ 'active' par '1' pour ne pas re-enregistrer l'absence la deuxieme fois
+    Seance::where('id',$request->id_sea)->update(['active' => 1]);
+
+       return redirect()->route('list.seance')->with(['success' => 'absence est bien modifié ']);
   } catch (\Exception $ex) {
       return $ex;
     return redirect()->route('list.seance')->with(['error' => 'Erreur!!! ']);
